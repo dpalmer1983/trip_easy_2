@@ -14,7 +14,7 @@
         <th>Start date</th>
         <th>End date</th>
         <th>Description</th>
-        <th>User</th>
+        <th>Trip Organizer</th>
         <th>Actions</th>
       </tr>
 
@@ -25,7 +25,7 @@
         <td><%= trip.start_date %></td>
         <td><%= trip.end_date %></td>
         <td><%= trip.description %></td>
-        <td><%= trip.user_id %></td>
+        <td><%= trip.user.first_name %> <%= trip.user.last_name %></td>
         <td>
           <a href="/trips/<%= trip.id %>" class="btn btn-primary">Show</a>
           <a href="/trips/<%= trip.id %>/edit" class="btn btn-warning">Edit</a>
