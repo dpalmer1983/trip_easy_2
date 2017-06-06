@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  # READ
+  get "/users", :controller => "users", :action => "index"
+  get "/users/:id", :controller => "users", :action => "show"
+
+
+
   # Routes for the Trip resource:
   # CREATE
   get "/trips/new", :controller => "trips", :action => "new"

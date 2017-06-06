@@ -1,0 +1,23 @@
+<div class="page-header">
+  <h1>
+    Possible Participants
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>All Possible Trip Goers!</th>
+      </tr>
+
+      <% @users.each do |user| %>
+      <tr>
+        <td>
+          <a href="/users/<%= user.id %>" class="btn btn-primary"><%= user.username %>: <%= user.email %></a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

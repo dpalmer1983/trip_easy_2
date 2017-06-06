@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>TripEasy2</title>
+  <title>Trip Easy</title>
 
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.5/cerulean/bootstrap.min.css">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
   <style>
-    /* Only necessary if you are using navbar-fixed-top */
-    body {
-      padding-top: 60px;
-    }
+  /* Only necessary if you are using navbar-fixed-top */
+  body {
+    padding-top: 60px;
+  }
   </style>
 
   <%= stylesheet_link_tag    "application", :media => "all" %>
@@ -34,13 +34,23 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a href="/" class="navbar-brand">TripEasy2</a>
+        <a href="/" class="navbar-brand">Trip Easy</a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><a href="/rails/info">Sitemap</a></li>
+          <%if current_user != nil%>
+
+          <li><a href=  "/users/<%=current_user.id%>"> My Trips </a></li>
+
+          <% else %>
+          <li><a href="/users/sign_up">My Trips</li>
+
+            <% end %>
+
+
+          
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
@@ -53,17 +63,17 @@
 
   <div class="container">
     <% if notice.present? %>
-      <div class="alert alert-dismissable alert-success">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <%= notice %>
-      </div>
+    <div class="alert alert-dismissable alert-success">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= notice %>
+    </div>
     <% end %>
 
     <% if alert.present? %>
-      <div class="alert alert-dismissable alert-warning">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <%= alert %>
-      </div>
+    <div class="alert alert-dismissable alert-warning">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= alert %>
+    </div>
     <% end %>
 
     <%= yield %>
