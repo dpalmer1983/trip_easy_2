@@ -1,0 +1,82 @@
+<!-- Validation failure messages -->
+<% if @trip.errors.any? %>
+  <% @trip.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Trip</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_trip" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for name -->
+      <div class="form-group">
+        <label for="name" class="control-label">
+          Name
+        </label>
+
+        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @trip.name %>">
+      </div>
+
+      <!-- Label and input for destination -->
+      <div class="form-group">
+        <label for="destination" class="control-label">
+          Destination
+        </label>
+
+        <input type="text" id="destination" name="destination" placeholder="Destination" class="form-control" value="<%= @trip.destination %>">
+      </div>
+
+      <!-- Label and input for start_date -->
+      <div class="form-group">
+        <label for="start_date" class="control-label">
+          Start date
+        </label>
+
+        <input type="text" id="start_date" name="start_date" placeholder="Start date" class="form-control" value="<%= @trip.start_date %>">
+      </div>
+
+      <!-- Label and input for end_date -->
+      <div class="form-group">
+        <label for="end_date" class="control-label">
+          End date
+        </label>
+
+        <input type="text" id="end_date" name="end_date" placeholder="End date" class="form-control" value="<%= @trip.end_date %>">
+      </div>
+
+      <!-- Label and input for description -->
+      <div class="form-group">
+        <label for="description" class="control-label">
+          Description
+        </label>
+
+        <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"><%= @trip.description %></textarea>
+      </div>
+
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+        <label for="user_id" class="control-label">
+          User
+        </label>
+
+        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @trip.user_id %>">
+      </div>
+
+      <button class="btn btn-success">
+        Create Trip
+      </button>
+      or
+      <a href="/trips">Cancel</a>
+    </form>
+  </div>
+</div>
