@@ -34,19 +34,9 @@
         </a>
       </li>
       <% end %>
-          <dd> loop through the trip participants here </dd>
+      <dd> loop through the trip participants here </dd>
 
-      <div class="form-group">
-        <label for="participant_id" class="control-label">
-          Add another participant
-        </label>
-
-        <%= select_tag(:username, options_from_collection_for_select(Participant.all, :id, :user_id, :username), :class => "form-control") %>
-
-
-        <dd> include a dropdown menu with all users in the database to add additional participants here </dd>
-        <dd> I'll need a button to add participants </dd>
-      </li>
+      
 
 
 

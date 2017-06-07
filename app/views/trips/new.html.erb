@@ -66,28 +66,11 @@
         </div>
       </div>
 
-      <!-- Label and input for description -->
-      <div class="form-group">
-        <label for="description" class="control-label">
-          Description
-        </label>
-
-        <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"><%= @trip.description %></textarea>
-      </div>
-
-      <!-- Add participants to the trip -->
-      <p>
-        You'll be able to add participants on the Trip's homepage
-      </p>
-
-      <!-- I need to go to the participant table, find the participant ID, link to the user ID, then go to the user table to find the User's first name, and sort those first names in ascending order in a drop-down menu -->
-
-
 
       <!-- Label and input for user_id -->
       <!-- this is frustrating - it should be current_user but instead the only thing that seems to work is @trip.user_id. something is happening with Devise helper method -->
       <div class="form-group">
-        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= current_user.id %>">
+        <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= current_user.id %>">
       </div>
 
       <button class="btn btn-success">
