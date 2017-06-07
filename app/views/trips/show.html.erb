@@ -21,20 +21,40 @@
       <dd><%= @trip.description %></dd>
 
       <!-- this requires a .each loop to show each participant in the trip -->
+
       <dt>Trip Participants</dt>
-      <% @participant.trips.each do |trip| %>
-      <li class="list-group-item">
-        <%= trip.name %>
+      <dd>
+        <ul class="list-group">
+          <% @trip.participants.each do |trip| %>
+          <li class="list-group-item">
+            <dd> loop through the trip participants here </dd>
+            <%= @trip.user.first_name %> <%= @trip.user.last_name %>
+          </dl>
+
+        </a>
       </li>
       <% end %>
+          <dd> loop through the trip participants here </dd>
 
-      <dd><%= @trip.participant_id.user_id.first_name %> <%= @trip.participant_id.user_id.last_name %>
-      </dl>
+      <div class="form-group">
+        <label for="participant_id" class="control-label">
+          Add another participant
+        </label>
+
+        <%= select_tag(:username, options_from_collection_for_select(Participant.all, :id, :user_id, :username), :class => "form-control") %>
+
+
+        <dd> include a dropdown menu with all users in the database to add additional participants here </dd>
+        <dd> I'll need a button to add participants </dd>
+      </li>
+
+
+
 
       <dt>Trip Creator</dt>
       <dd><%= @trip.user.first_name %> <%= @trip.user.last_name %></dd>
-
     </dl>
+
 
     <div class="btn-group btn-group-justified">
       <a href="/trips" class="btn btn-primary">

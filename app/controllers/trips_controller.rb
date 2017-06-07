@@ -2,14 +2,13 @@ class TripsController < ApplicationController
   def index
     @trips = Trip.all
 
-
     render("trips/index.html.erb")
   end
 
   def show
     @trip = Trip.find(params[:id])
     @participant = Participant.all
-    
+
     render("trips/show.html.erb")
   end
 

@@ -44,7 +44,7 @@
               Start date
             </label>
             <div class='input-group date' id='datetimepicker6'>
-              <input type='text' class="form-control" name="start_date" id="start_date" value="<%= @trip.start_date %>" />
+              <input type='text' class="form-control" name="start_date" id="start_date" value="<%= @trip.start_date %>">
               <span class="input-group-addon">
                 <span class="glyphicon glyphicon-calendar"></span>
               </span>
@@ -76,18 +76,18 @@
       </div>
 
       <!-- Add participants to the trip -->
-      <label for="participant" class="control-label">
-        Add some participants
-      </label>
+      <p>
+        You'll be able to add participants on the Trip's homepage
+      </p>
 
       <!-- I need to go to the participant table, find the participant ID, link to the user ID, then go to the user table to find the User's first name, and sort those first names in ascending order in a drop-down menu -->
 
-      <%= select_tag(user_id, options_from_collection_for_select(User.order("first_name ASC"), :id, :first_name, @trip.user_id), :class => "form-control") %>
+
 
       <!-- Label and input for user_id -->
       <!-- this is frustrating - it should be current_user but instead the only thing that seems to work is @trip.user_id. something is happening with Devise helper method -->
       <div class="form-group">
-        <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @trip.user_id %>">
+        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= current_user.id %>">
       </div>
 
       <button class="btn btn-success">

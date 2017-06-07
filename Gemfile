@@ -10,6 +10,7 @@ gem "starter_generators", :git => "https://github.com/raghubetina/starter_genera
 
 gem 'bcrypt', platforms: :ruby
 
+
 gem 'chronic'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.7.14'
