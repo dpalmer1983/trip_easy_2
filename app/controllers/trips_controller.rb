@@ -2,6 +2,7 @@ class TripsController < ApplicationController
   def index
     @trips = Trip.all
 
+
     render("trips/index.html.erb")
   end
 
@@ -26,6 +27,7 @@ class TripsController < ApplicationController
     @trip.end_date = Chronic.parse(params[:end_date])
     @trip.description = params[:description]
     @trip.user_id = params[:user_id]
+
 
     save_status = @trip.save
 
