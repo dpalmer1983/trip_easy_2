@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :trackable, :validatable
 
+  validates :username, uniquness: { case_sensitive: false }
+  validates :email, uniqueness: { case_sensitive: false }
 
   #ASSOCIATIONS
   has_many :trips, :dependent => :destroy
