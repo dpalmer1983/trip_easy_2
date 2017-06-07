@@ -22,8 +22,8 @@ class TripsController < ApplicationController
 
     @trip.name = params[:name]
     @trip.destination = params[:destination]
-    @trip.start_date = params[:start_date]
-    @trip.end_date = params[:end_date]
+    @trip.start_date = Chronic.parse(params[:start_date])
+    @trip.end_date = Chronic.parse(params[:end_date])
     @trip.description = params[:description]
     @trip.user_id = params[:user_id]
 

@@ -21,7 +21,7 @@
       <!-- Label and input for name -->
       <div class="form-group">
         <label for="name" class="control-label">
-          Name
+        Trip name
         </label>
 
         <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @trip.name %>">
@@ -37,21 +37,33 @@
       </div>
 
       <!-- Label and input for start_date -->
-      <div class="form-group">
-        <label for="start_date" class="control-label">
-          Start date
-        </label>
-
-        <input type="text" id="start_date" name="start_date" placeholder="Start date" class="form-control" value="<%= @trip.start_date %>">
-      </div>
-
-      <!-- Label and input for end_date -->
-      <div class="form-group">
-        <label for="end_date" class="control-label">
-          End date
-        </label>
-
-        <input type="text" id="end_date" name="end_date" placeholder="End date" class="form-control" value="<%= @trip.end_date %>">
+      <div class="container">
+        <div class='col-md-5'>
+          <div class="form-group">
+            <label for="start_date" class="control-label">
+              Start date
+            </label>
+            <div class='input-group date' id='datetimepicker6'>
+              <input type='text' class="form-control" name="start_date" id="start_date" value="<%= @trip.start_date %>" />
+              <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class='col-md-5'>
+          <div class="form-group">
+            <label for="end_date" class="control-label">
+              End date
+            </label>
+            <div class='input-group date' id='datetimepicker7'>
+              <input type='text' class="form-control" name="end_date" id="end_date" value="<%= @trip.end_date %>" />
+              <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Label and input for description -->
@@ -78,3 +90,23 @@
     </form>
   </div>
 </div>
+
+
+<!-- javascript for date and time pickers -->
+
+
+
+<script type="text/javascript">
+$(function () {
+  $('#datetimepicker6').datetimepicker();
+  $('#datetimepicker7').datetimepicker({
+      useCurrent: false //Important! See issue #1075
+  });
+  $("#datetimepicker6").on("dp.change", function (e) {
+    $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+  });
+  $("#datetimepicker7").on("dp.change", function (e) {
+    $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+  });
+});
+</script>

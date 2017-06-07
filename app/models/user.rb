@@ -7,6 +7,6 @@ class User < ApplicationRecord
 
   #ASSOCIATIONS
   has_many :trips, :dependent => :destroy
-  has_many :participants, :dependent => :destroy
+  # has_many :participants, :dependent => :destroy
 
 end

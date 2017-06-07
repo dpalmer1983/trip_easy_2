@@ -42,15 +42,15 @@
         <ul class="nav navbar-nav">
           <%if current_user != nil%>
 
-          <li><a href=  "/trips/<%=current_user.id%>"> My Trips </a></li>
+          <li>
+            <a href=  "/trips/<%= current_user.id %> "> My Trips </a>
+          </li>
 
           <% else %>
-          <li><a href="/users/sign_up">My Trips</li>
-
-            <% end %>
-
-
-
+          <li>
+            <a href="/users/sign_up">My Trips</a>
+          </li>
+          <% end %>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
