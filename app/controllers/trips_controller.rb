@@ -8,7 +8,8 @@ class TripsController < ApplicationController
 
   def show
     @trip = Trip.find(params[:id])
-
+    @participant = Participant.all
+    
     render("trips/show.html.erb")
   end
 

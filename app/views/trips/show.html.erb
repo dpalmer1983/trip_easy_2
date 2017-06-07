@@ -20,6 +20,17 @@
       <dt>Description</dt>
       <dd><%= @trip.description %></dd>
 
+      <!-- this requires a .each loop to show each participant in the trip -->
+      <dt>Trip Participants</dt>
+      <% @participant.trips.each do |trip| %>
+      <li class="list-group-item">
+        <%= trip.name %>
+      </li>
+      <% end %>
+
+      <dd><%= @trip.participant_id.user_id.first_name %> <%= @trip.participant_id.user_id.last_name %>
+      </dl>
+
       <dt>Trip Creator</dt>
       <dd><%= @trip.user.first_name %> <%= @trip.user.last_name %></dd>
 
