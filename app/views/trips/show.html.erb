@@ -12,10 +12,10 @@
       <dd><%= @trip.destination %></dd>
 
       <dt>Start date</dt>
-      <dd><%= @trip.start_date.strftime('%A, %B %e, %Y, at %l:%M%P') %></dd>
+      <dd><%= @trip.start_date %></dd>
 
       <dt>End date</dt>
-      <dd><%= @trip.end_date.strftime('%A, %B %e, %Y, at %l:%M%P') %></dd>
+      <dd><%= @trip.end_date %></dd>
 
       <dt>Description</dt>
       <dd><%= @trip.description %></dd>
@@ -27,36 +27,27 @@
         <ul class="list-group">
           <% @trip.participants.each do |trip| %>
           <li class="list-group-item">
-            <dd> loop through the trip participants here </dd>
-            <%= @trip.user.first_name %> <%= @trip.user.last_name %>
+            <%= trip.user.first_name %> <%= trip.user.last_name %>
           </dl>
 
-        </a>
-      </li>
+        </ul>
+      </dd>
       <% end %>
-      <dd> loop through the trip participants here </dd>
 
 
+        
+      </ul>
 
-
-
+      <div class="btn-group btn-group-justified">
+        <a href="/trips" class="btn btn-primary">
+          Back
+        </a>
+        <a href="/trips/<%= @trip.id %>/edit" class="btn btn-warning">
+          Edit
+        </a>
+        <a href="/delete_trip/<%= @trip.id %>" class="btn btn-danger" rel="nofollow">
+          Delete
+        </a>
+      </div>
     </div>
-
-    <dt>Trip Creator</dt>
-    <dd><%= @trip.user.first_name %> <%= @trip.user.last_name %></dd>
-  </dl>
-
-
-  <div class="btn-group btn-group-justified">
-    <a href="/trips" class="btn btn-primary">
-      Back
-    </a>
-    <a href="/trips/<%= @trip.id %>/edit" class="btn btn-warning">
-      Edit
-    </a>
-    <a href="/delete_trip/<%= @trip.id %>" class="btn btn-danger" rel="nofollow">
-      Delete
-    </a>
   </div>
-</div>
-</div>

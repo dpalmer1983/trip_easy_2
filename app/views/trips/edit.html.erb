@@ -42,14 +42,14 @@
         <ul class="list-group">
           <% @trip.participants.each do |trip| %>
           <li class="list-group-item">
-            <dd> loop through the trip participants here </dd>
-            <%= @trip.user.first_name %> <%= @trip.user.last_name %>
+            <dd>   <%= trip.participants.first_name %> <%= trip.participants.last_name %> </dd>
+
           </dl>
 
         </a>
       </li>
       <% end %>
-      <dd> loop through the trip participants here </dd>
+
 
       <div class="form-group">
         <label for="participant_id" class="control-label">
