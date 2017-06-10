@@ -1,34 +1,80 @@
-body {
-  background-image: url("paper.gif");
-  background-color: #cccccc;
-}
+<% if current_user %>
+<h3>Hello <%= @user.name %></h3>
+<% else %>
 
-<h2>this is your home page</h2>
+<div class="jumbotron">
+  <h2> Welcome to Trip Easy! </h2>
+  <p class="lead">
+    You'll love managing your trip with our app with friends and family!
+  </p>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="form-group">
+    <%= f.label :email %>
+    <%= f.email_field :email, autofocus: true %>
+    <%= f.label :password %>
+    <%= f.password_field :password, autocomplete: "off" %>
+    <% if devise_mapping.rememberable? -%>
+    <%= f.check_box :remember_me %>
+    <%= f.label :remember_me %>
+    <% end -%>
+    <div class="actions">
+      <%= f.submit "Log in" %>
+    </div>
+    <% end %>
+    <%= render "devise/shared/links" %>
+  </div>
+  <p>
+    <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary sign-up' %>
+  </p>
 
 
+  <img src="https://static.pexels.com/photos/297755/pexels-photo-297755.jpeg" class="img-responsive" alt="Responsive image" size="50%">
 
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-<div class="form-group">
-  <%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %>
-</div>
+  <section class="main_benefits_block">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-md-3">
+          <div class="thumbnail">
+            <img src="https://images.pexels.com/photos/7979/night-camera-lens-map.jpg?w=940&h=650&auto=compress&cs=tinysrgb" class="img-responsive" alt="Responsive image">
+            <div class="caption">
+              <h3>Create a trip</h3>
+              <h5>Create a new trip and then invite your friends, family members, or classmates</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <div class="thumbnail">
+            <img src="https://images.pexels.com/photos/6550/nature-sky-sunset-man.jpeg?w=940&h=650&auto=compress&cs=tinysrgb" class="img-responsive" alt="Responsive image">
+            <div class="caption">
+              <h3>Get inspired</h3>
+              <h5>Browse other trips for inspiration</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <div class="thumbnail">
+            <img src="https://images.pexels.com/photos/237675/pexels-photo-237675.jpeg?w=940&h=650&auto=compress&cs=tinysrgb" class="img-responsive" alt="Responsive image">
+            <div class="caption">
+              <h3>Stay organized</h3>
+              <h5>Keep all your trip info, expenses, and photos in one place</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <div class="thumbnail">
+            <img src="https://images.pexels.com/photos/48660/pexels-photo-48660.jpeg?w=940&h=650&auto=compress&cs=tinysrgb" class="img-responsive" alt="Responsive image">
+            <div class="caption">
+              <h3>Keep and share the memories</h3>
+              <h5>Store your photos, places you went, people you met and share them with your friends</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<div class="form-group">
-  <%= f.label :password %><br />
-  <%= f.password_field :password, autocomplete: "off" %>
-</div>
 
-<% if devise_mapping.rememberable? -%>
-<div class="form-group">
-  <%= f.check_box :remember_me %>
-  <%= f.label :remember_me %>
-</div>
-<% end -%>
-
-<div class="actions">
-  <%= f.submit "Log in" %>
-</div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+  
+  <% end %>

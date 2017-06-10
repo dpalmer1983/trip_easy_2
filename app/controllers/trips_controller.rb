@@ -1,7 +1,7 @@
 class TripsController < ApplicationController
   def index
     @trips = Trip.all
-
+    
     render("trips/index.html.erb")
   end
 
