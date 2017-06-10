@@ -40,7 +40,6 @@ class TripsController < ApplicationController
 
   def edit
     @trip = Trip.find(params[:id])
-    @participant = Participant.all
 
     render("trips/edit.html.erb")
   end
@@ -50,10 +49,10 @@ class TripsController < ApplicationController
 
     @trip.name = params[:name]
     @trip.destination = params[:destination]
-    @trip.start_date = params[:start_date]
-    @trip.end_date = params[:end_date]
     @trip.description = params[:description]
     @trip.user_id = params[:user_id]
+    @trip.start_date = Chronic.parse(params[:start_date])
+    @trip.end_date = Chronic.parse(params[:end_date])
 
     save_status = @trip.save
 

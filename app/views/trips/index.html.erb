@@ -21,12 +21,10 @@
       <% @trips.each do |trip| %>
       <tr>
 
-<!-- insert code here to get the trips to show up only if the person has access to them (i.e. is only an organizer or a participant in the trip)... it'll be an if-else statement-->
-
         <td><%= trip.name %></td>
         <td><%= trip.destination %></td>
-        <td><%= trip.start_date %></td>
-        <td><%= trip.end_date %></td>
+        <td><%= trip.start_date.strftime('%A, %B %e, %Y, at %l:%M%P') %></td>
+        <td><%= trip.end_date.strftime('%A, %B %e, %Y, at %l:%M%P') %></td>
         <td><%= trip.description %></td>
         <td><%= trip.user.first_name %> <%= trip.user.last_name %></td>
         <td>
