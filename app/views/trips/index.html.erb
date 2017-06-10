@@ -32,7 +32,7 @@
             <!-- if the current user is not included in the trip participants, build a form to allow them to join the trip  -->
             <% if trip.participants.where(:id => current_user.id).count == 0 %>
             <p>
-              <form action="/join_trip" method="post">
+              <form action="/create_participant" method="post">
                 <!-- Hidden input for authenticity token to protect from forgery -->
                 <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 

@@ -21,23 +21,23 @@ Rails.application.routes.draw do
 
 
 
-    # Routes for the Participant resource:
-    # CREATE
-    get "/participants/new", :controller => "participants", :action => "new"
-    post "/create_participant", :controller => "participants", :action => "create"
+  # Routes for the Participant resource:
+  # CREATE
+  get "/participants/new", :controller => "participants", :action => "new"
+  post "/create_participant", :controller => "participants", :action => "create"
 
-    # READ
-    get "/participants", :controller => "participants", :action => "index"
-    get "/participants/:id", :controller => "participants", :action => "show"
+  # READ
+  get "/participants", :controller => "participants", :action => "index"
+  get "/participants/:id", :controller => "participants", :action => "show"
+  get "/my_participants", :controller => "participants", :action => "my_participants"
 
+  # UPDATE
+  get "/participants/:id/edit", :controller => "participants", :action => "edit"
+  post "/update_participant/:id", :controller => "participants", :action => "update"
 
-    # UPDATE
-    get "/participants/:id/edit", :controller => "participants", :action => "edit"
-    post "/update_participant/:id", :controller => "participants", :action => "update"
-
-    # DELETE
-    get "/delete_participant/:id", :controller => "participants", :action => "destroy"
-    #------------------------------
+  # DELETE
+  get "/delete_participant/:id", :controller => "participants", :action => "destroy"
+  #------------------------------
 
 
 

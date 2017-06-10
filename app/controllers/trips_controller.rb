@@ -2,7 +2,7 @@ class TripsController < ApplicationController
   def index
     @trips = Trip.all
     @current_user = current_user
-    
+
     render("trips/index.html.erb")
   end
 

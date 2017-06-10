@@ -1,101 +1,133 @@
 <!-- Validation failure messages -->
 <% if @trip.errors.any? %>
-  <% @trip.errors.full_messages.each do |message| %>
-  <div class="alert alert-dismissable alert-danger">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <%= message %>
-  </div>
-  <% end %>
-  <% end %>
+<% @trip.errors.full_messages.each do |message| %>
+<div class="alert alert-dismissable alert-danger">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <%= message %>
+</div>
+<% end %>
+<% end %>
 
-  <div class="page-header">
-    <h3>Edit Trip #<%= @trip.id %></h3>
-  </div>
+<div class="page-header">
+  <h3>Edit Trip #<%= @trip.id %></h3>
+</div>
 
-  <div class="row">
-    <div class="col-md-12">
-      <form action="/update_trip/<%= @trip.id %>" method="post">
-        <!-- Hidden input for authenticity token to protect from forgery -->
-        <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_trip/<%= @trip.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-        <!-- Label and input for name -->
-        <div class="form-group">
-          <label for="name" class="control-label">
-            Name
-          </label>
+      <!-- Label and input for name -->
+      <div class="form-group">
+        <label for="name" class="control-label">
+          Name
+        </label>
 
-          <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @trip.name %>">
-        </div>
+        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @trip.name %>">
+      </div>
 
-        <!-- Label and input for destination -->
-        <div class="form-group">
-          <label for="destination" class="control-label">
-            Destination
-          </label>
+      <!-- Label and input for destination -->
+      <div class="form-group">
+        <label for="destination" class="control-label">
+          Destination
+        </label>
 
-          <input type="text" id="destination" name="destination" placeholder="Destination" class="form-control" value="<%= @trip.destination %>">
-        </div>
+        <input type="text" id="destination" name="destination" placeholder="Destination" class="form-control" value="<%= @trip.destination %>">
+      </div>
 
 
-        <dt>Current Trip Participants</dt>
-        <dd>
-          <ul class="list-group">
-            <% @trip.participants.each do |trip| %>
-            <p>
-              <%= trip.user.first_name %>
-              <%= trip.user.last_name %>:
-              <%= trip.user.email %>
-            </p>
-            <% end %>
-          </ul>
+      <dt>Current Trip Participants</dt>
+      <dd>
+        <ul class="list-group">
+          <% @trip.participants.each do |trip| %>
+          <p>
+            <%= trip.user.first_name %>
+            <%= trip.user.last_name %>:
+            <%= trip.user.email %>
+          </p>
+          <% end %>
         </ul>
+      </ul>
 
 
-        <div class="form-group">
-          <label for="participant_id" class="control-label">
-            Add another participant
-          </label>
+      <div class="form-group">
+        <label for="participant_id" class="control-label">
+          Add another participant
+        </label>
 
 
 
 
-          <dd> include a dropdown menu with all users in the database to add additional participants here </dd>
-          <dd> I'll need a button to add participants </dd>
-        </li>
+        <dd> include a dropdown menu with all users in the database to add additional participants here </dd>
+        <dd> I'll need a button to add participants </dd>
+      </li>
 
 
-        <!-- Label and input for description -->
-        <div class="form-group">
-          <label for="description" class="control-label">
-            Description
-          </label>
+      <!-- Label and input for description -->
+      <div class="form-group">
+        <label for="description" class="control-label">
+          Description
+        </label>
 
-          <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"><%= @trip.description %></textarea>
+        <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"><%= @trip.description %></textarea>
+      </div>
+
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+
+        <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= current_user.id %>">
+      </div>
+
+      <!-- Label and input for start_date -->
+      <div class="container">
+        <div class='col-md-5'>
+          <div class="form-group">
+            <div class='input-group date' id='datetimepicker6'>
+              <input type='text' class="form-control" />
+              <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+              </span>
+            </div>
+          </div>
         </div>
-
-        <!-- Label and input for user_id -->
-        <div class="form-group">
-
-          <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= current_user.id %>">
+        <div class='col-md-5'>
+          <div class="form-group">
+            <div class='input-group date' id='datetimepicker7'>
+              <input type='text' class="form-control" />
+              <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+              </span>
+            </div>
+          </div>
         </div>
+      </div>
 
-        <!-- Label and input for start_date -->
-        <div class="form-group">
-
-          <input type="hidden" id="start_date" name="start_date" placeholder="Trip" class="form-control" value="<%= trip.id %>">
-        </div>
-
-        <!-- Label and input for start_date -->
-        <div class="form-group">
-
-          <input type="hidden" id="end_date" name="end_date" placeholder="Trip" class="form-control" value="<%= trip.id %>">
-        </div>
-
-        <button class="btn btn-warning">
-          Update Trip
-        </button>
-        or
-        <a href="/trips/<%= @trip.id %>">Cancel</a>
-      </form>
-    </div>
+      <button class="btn btn-warning">
+        Update Trip
+      </button>
+      or
+      <a href="/trips/<%= @trip.id %>">Cancel</a>
+    </form>
   </div>
+</div>
+
+
+<script type="text/javascript">
+$('#datetimepicker6').datetimepicker({
+  format: 'MMMM D, Y',
+  defaultDate: "<% if @trip.start_date != nil %><%= @trip.start_date %><% end %>"
+  // defaultDate: "<% if @trip.start_date != nil %><%= @trip.start_date.strftime("%m/%d/%y") %><% end %>"
+});
+$('#datetimepicker7').datetimepicker({
+    format: 'MMMM D, Y',
+    useCurrent: false, //Important! See issue #1075
+    defaultDate: "<% if @trip.end_date != nil %><%= @trip.end_date %><% end %>"
+});
+$("#datetimepicker6").on("dp.change", function (e) {
+    $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+});
+$("#datetimepicker7").on("dp.change", function (e) {
+    $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+});});
+</script>
