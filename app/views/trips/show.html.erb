@@ -26,28 +26,31 @@
       <dd>
         <ul class="list-group">
           <% @trip.participants.each do |trip| %>
-          <li class="list-group-item">
-            <%= trip.user.first_name %> <%= trip.user.last_name %>
-          </dl>
-
+          <p>
+            <%= trip.user.first_name %>
+            <%= trip.user.last_name %>:
+            <%= trip.user.email %>
+          </p>
+          <% end %>
         </ul>
-      </dd>
-      <% end %>
-
-
-        
       </ul>
 
-      <div class="btn-group btn-group-justified">
-        <a href="/trips" class="btn btn-primary">
-          Back
-        </a>
-        <a href="/trips/<%= @trip.id %>/edit" class="btn btn-warning">
-          Edit
-        </a>
-        <a href="/delete_trip/<%= @trip.id %>" class="btn btn-danger" rel="nofollow">
-          Delete
-        </a>
-      </div>
-    </div>
-  </div>
+    </dd>
+  </dl>
+</div>
+
+
+
+<div class="btn-group btn-group-justified">
+  <a href="/trips" class="btn btn-primary">
+    Back
+  </a>
+  <a href="/trips/<%= @trip.id %>/edit" class="btn btn-warning">
+    Edit
+  </a>
+  <a href="/delete_trip/<%= @trip.id %>" class="btn btn-danger" rel="nofollow">
+    Delete
+  </a>
+</div>
+</div>
+</div>

@@ -40,6 +40,7 @@ class TripsController < ApplicationController
 
   def edit
     @trip = Trip.find(params[:id])
+    @participant = Participant.all
 
     render("trips/edit.html.erb")
   end

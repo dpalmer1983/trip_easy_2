@@ -37,18 +37,18 @@
       </div>
 
 
-      <dt>Trip Participants</dt>
+      <dt>Current Trip Participants</dt>
       <dd>
         <ul class="list-group">
           <% @trip.participants.each do |trip| %>
-          <li class="list-group-item">
-            <dd>   <%= trip.participants.first_name %> <%= trip.participants.last_name %> </dd>
-
-          </dl>
-
-        </a>
-      </li>
-      <% end %>
+          <p>
+            <%= trip.user.first_name %>
+            <%= trip.user.last_name %>:
+            <%= trip.user.email %>
+          </p>
+          <% end %>
+        </ul>
+      </ul>
 
 
       <div class="form-group">
@@ -56,7 +56,7 @@
           Add another participant
         </label>
 
-        <%= select_tag(:username, options_from_collection_for_select(Participant.all, :id, :user_id, :username), :class => "form-control") %>
+        <%= select_tag(:participant_id, options_from_collection_for_select(Participant.all, :id, :first_name, @user.participant_id ), :class => "form-control") %>
 
 
         <dd> include a dropdown menu with all users in the database to add additional participants here </dd>

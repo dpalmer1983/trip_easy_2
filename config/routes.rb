@@ -45,6 +45,7 @@ Rails.application.routes.draw do
   # home pages
   root 'trips#index'
 
+
   # READ
   get "/users", :controller => "users", :action => "index"
   get "/users/:id", :controller => "users", :action => "show"
