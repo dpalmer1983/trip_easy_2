@@ -11,6 +11,12 @@ class ParticipantsController < ApplicationController
     render("participants/show.html.erb")
   end
 
+  def my_participants
+    @participants = current_user.participant_trips
+
+    render("participants/my_participants.html.erb")
+  end
+
   def new
     @participant = Participant.new
 

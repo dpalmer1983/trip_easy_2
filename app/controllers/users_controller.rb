@@ -8,7 +8,8 @@ class UsersController < ApplicationController
 
   def show
     @users = User.find(params[:id])
-    
+    @current_user = current_user
+
     render("users/show.html.erb")
   end
 end
