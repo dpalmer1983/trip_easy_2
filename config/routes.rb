@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     get "/participants", :controller => "participants", :action => "index"
     get "/participants/:id", :controller => "participants", :action => "show"
 
+
     # UPDATE
     get "/participants/:id/edit", :controller => "participants", :action => "edit"
     post "/update_participant/:id", :controller => "participants", :action => "update"
