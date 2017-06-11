@@ -10,14 +10,12 @@
     <table class="table table-striped table-hover">
       <tr>
         <th>Name</th>
-        <th>Time</th>
         <th>Actions</th>
       </tr>
 
       <% @activities.each do |activity| %>
       <tr>
         <td><%= activity.name %></td>
-        <td><%= activity.time %></td>
         <td>
           <a href="/activities/<%= activity.id %>" class="btn btn-primary">Show</a>
           <a href="/activities/<%= activity.id %>/edit" class="btn btn-warning">Edit</a>

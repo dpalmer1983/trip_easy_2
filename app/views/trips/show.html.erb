@@ -1,45 +1,74 @@
 <div class="page-header">
-  <h3>Trip <%= @trip.name %></h3>
+  <h1><%= @trip.name %></h1>
 </div>
 
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
-      <dt>Name</dt>
-      <dd><%= @trip.name %></dd>
 
-      <dt>Destination</dt>
+
+      <dt>Heading to</dt>
       <dd><%= @trip.destination %></dd>
 
-      <dt>Start date</dt>
-      <dd><%= @trip.start_date %></dd>
 
-      <dt>End date</dt>
-      <dd><%= @trip.end_date %></dd>
-
-      <dt>Description</dt>
-      <dd><%= @trip.description %></dd>
-      <dt>Activities</dt>
-      <dd><%= @trip.activities %></dd>
-      <!-- this requires a .each loop to show each activity in the trip -->
-    </ul>
-
-
-
-
-    <!-- this is working - don't change it -->
-    <dt>Trip Participants</dt>
-    <dd>
-      <ul class="list-group">
-        <% @trip.participants.each do |trip| %>
-        <p>
-          <%= trip.user.first_name %>
-          <%= trip.user.last_name %>:
-          <%= trip.user.email %>
-        </p>
-        <% end %>
+      <!-- this is working - don't change it -->
+      <dt>With these people</dt>
+      <dd>
+        <ul class="list-group">
+          <% @trip.participants.each do |trip| %>
+          <p>
+            <%= trip.user.first_name %>
+            <%= trip.user.last_name %>:
+            <%= trip.user.email %>
+          </p>
+          <% end %>
+        </ul>
       </ul>
+
+      <dt>Starting</dt>
+      <dd><%= @trip.start_date.strftime('%B %e, %Y at %l:%M%P') %></dd>
+
+      <dt>To do:</dt>
+      <dd><ul>
+        <% @trip.activities.each do |activity| %>
+        <li>
+          <p>
+            <%= trip.activity.name %>
+          </p>
+        </li>
+        <% end %> <!--closes loop on listing all trip activities -->
+      </ul></dd>
+
+      <dt>Quick description</dt>
+      <dd><%= @trip.description %></dd>
+
+      <dt>And the trip ends</dt>
+      <dd><%= @trip.end_date.strftime('%B %e, %Y at %l:%M%P') %></dd>
+
+
+
+
     </ul>
+
+
+
+
+    <!-- Label and input for your first trip activity -->
+
+    <div class="form-group">
+      <div class="form-group">
+        <div class='col-md-4'>
+          <a class="btn btn-default" href="/activities/new" role="button">Create an activity</a>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class='col-md-4'>
+          <a class="btn btn-default" href="/participants/new" role="button">Create a participant</a>
+        </div>
+      </div>
+    </div>
+
 
   </dd>
 </dl>

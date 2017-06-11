@@ -36,23 +36,35 @@
               <dd><%= trip.destination %></dd>
 
               <dt>Start date</dt>
-              <dd><%= trip.start_date %></dd>
+              <dd><%= trip.start_date.strftime('%B %e, %Y at %l:%M%P') %></dd>
 
               <dt>End date</dt>
-              <dd><%= trip.end_date %></dd>
+              <dd><%= trip.end_date.strftime('%B %e, %Y at %l:%M%P') %></dd>
 
               <dt>Description</dt>
               <dd><%= trip.description %></dd>
 
             </dt>
 
-            <dt>Trip Participants:</dt>
+            <dt>Activities</dt>
+            <dd><ul>
+              <% @trip.activities.each do |activity| %>
+              <li>
+                <p>
+                  <%= trip.activity.name %>
+                </p>
+              </li>
+              <% end %> <!--closes loop on listing all trip activities -->
+            </ul></dd>
+
+
+            <dt>Participants</dt>
             <dd><ul>
               <% trip.participants.each do |participant| %>
               <li>
-                <small>
-                  <%=User.find_by(:id => participant.user_id).username %>
-                </small>
+
+                <%= User.find_by(:id => participant.user_id).username %>
+
               </li>
               <% end %> <!--closes loop on listing all trip participants -->
             </ul></dd>
@@ -104,19 +116,27 @@
 
               <!-- this requires a .each loop to show each activity in the trip -->
               <dt>Activities</dt>
-              <dd><%= trip.activity_id %></dd>
+              <dd><ul>
+                <% @trip.activities.each do |activity| %>
+                <li>
+                  <p>
+                    <%= trip.activity.name %>
+                  </p>
+                </li>
+                <% end %> <!--closes loop on listing all trip activities -->
+              </ul></dd>
 
             </dt>
 
 
 
-            <dt>Trip Participants:</dt>
+            <dt>Participants</dt>
             <dd><ul>
               <% trip.participants.each do |participant| %>
               <li>
-                <small>
+                <p>
                   <%=User.find_by(:id => participant.user_id).username %>
-                </small>
+                </p>
               </li>
               <% end %> <!--closes loop on listing all trip participants -->
             </ul></dd>

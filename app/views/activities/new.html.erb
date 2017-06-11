@@ -1,11 +1,11 @@
 <!-- Validation failure messages -->
 <% if @activity.errors.any? %>
-  <% @activity.errors.full_messages.each do |message| %>
-    <div class="alert alert-dismissable alert-danger">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <%= message %>
-    </div>
-  <% end %>
+<% @activity.errors.full_messages.each do |message| %>
+<div class="alert alert-dismissable alert-danger">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <%= message %>
+</div>
+<% end %>
 <% end %>
 
 <div class="page-header">
@@ -33,44 +33,19 @@
           Which trip do you want to add the activity to?
         </label>
 
-<!--- go to current user, then show only the trips they've created -->
-
+        <!--- go to current user, then show only the trips they've created -->
         <%= select_tag(:trip_id, options_from_collection_for_select(Trip.all, :id, :name, @activity.trip_id), :class => "form-control") %>
 
       </div>
 
-      <!-- Label and input for time -->
-      <div class="form-group">
-        <label for="time" class="control-label">
-          When is the activity?
-        </label>
-        <div class="container">
-            <div class="row">
-                <div class='col-sm-6'>
-                    <div class="form-group">
-                        <div class='input-group date' id='datetimepicker1'>
-                            <input type='text' name="time" class="form-control" />
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <script type="text/javascript">
-                    $(function () {
-                        $('#datetimepicker1').datetimepicker();
-                    });
-                </script>
-            </div>
-        </div>
 
-      </div>
 
-      <button class="btn btn-success">
-        Create Activity
-      </button>
-      or
-      <a href="/activities">Cancel</a>
-    </form>
-  </div>
+
+    <button class="btn btn-success">
+      Create Activity
+    </button>
+    or
+    <a href="/activities">Cancel</a>
+  </form>
+</div>
 </div>

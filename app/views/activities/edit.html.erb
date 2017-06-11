@@ -9,7 +9,7 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Edit Activity #<%= @activity.id %></h3>
+  <h3>Edit <%= @activity.name %></h3>
 </div>
 
 <div class="row">
@@ -26,14 +26,15 @@
 
         <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @activity.name %>">
       </div>
-      <!-- Label and input for time -->
-      <div class="form-group">
-        <label for="time" class="control-label">
-          Time
-        </label>
 
-        <input type="text" id="time" name="time" placeholder="Time" class="form-control" value="<%= @activity.time %>">
+      <!-- Label and input for trip_id -->
+      <div class="form-group">
+        <label for="trip_id" class="control-label">
+          Which trip do you want to add the activity to?
+        </label>
+        <%= select_tag(:trip_id, options_from_collection_for_select(Trip.all, :id, :name, @activity.trip_id), :class => "form-control") %>
       </div>
+
 
       <button class="btn btn-warning">
         Update Activity

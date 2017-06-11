@@ -20,8 +20,6 @@ class TripsController < ApplicationController
   def show
     @trip = Trip.find(params[:id])
     @participant = Participant.all
-    @trip.start_date = Chronic.parse(params[:start_date])
-    @trip.end_date = Chronic.parse(params[:end_date])
 
     @activity = Activity.all
 
