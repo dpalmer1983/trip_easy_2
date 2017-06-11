@@ -1,3 +1,17 @@
+<!-- create if-else where if the user doesn't have a trip or is not a participant on a trip, show a big button that says "create your first trip" and text above it that says "you don't have any trips yet, let's create some" -->
+ <% if trip.id.where(:id => current_user.id).count == 0 %>
+
+<h1> create a trip! </h1>
+
+
+ <% else %>
+
+
+<!-- else show this page below -->
+
+
+
+
 <div class="container">
   <div class="row">
     <div class="col-md-5">
@@ -20,89 +34,117 @@
               <small>
                 updated <%= time_ago_in_words(trip.updated_at)%> ago
               </small>
+              <a href="/trips/<%= trip.id %>/edit" class="btn btn-warning">
+                <i class="fa fa-edit"></i>
+                <a href="/delete_trip/<%= trip.id %>" class="btn btn-danger" rel="nofollow"> <i class="fa fa-trash-o"></i>
+                </a>
+              </a>
+            </h3>
+
+          </div>
+
+          <div class="panel-body">
+            <dl class="dl-horizontal">
+              <dt>Trip Creator:</dt>
+              <dd><%=User.find_by(:id => trip.user_id).username %></dd>
+
+              <dt>Destination</dt>
+              <dd><%= trip.destination %></dd>
+
+              <dt>Start date</dt>
+              <dd><%= trip.start_date %></dd>
+
+              <dt>End date</dt>
+              <dd><%= trip.end_date %></dd>
+
+              <dt>Description</dt>
+              <dd><%= trip.description %></dd>
+
+            </dt>
+
+            <dt>Trip Participants:</dt>
+            <dd><ul>
+              <% trip.participants.each do |participant| %>
+              <li>
+                <small>
+                  <%=User.find_by(:id => participant.user_id).username %>
+                </small>
+              </li>
+              <% end %> <!--closes loop on listing all trip participants -->
+            </ul></dd>
+
+          </div>       <!-- closes panel body  -->
+        </div>     <!-- closes panel -->
+
+      </div>    <!-- closes row -->
+      <% end %> <!-- closes the full loop -->
+
+    </div>
+
+
+    <div class="col-md-offset-2 col-md-5">
+      <!-- right column -->
+
+      <h1>Trips you're participating in</h1>
+      <h4>this currently has all the trips that the person created, not the ones where the person is the participant. I need to fix this </h4>
+      <!-- show the trips in which the current_user is a participant, and providing the option to remove themselves from that trip -->
+      <% Trip.where(:user_id => @current_user.id).each do |trip| %>
+
+      <div class="row">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              <a href="/users/<%=trip.user_id%>"><%=trip.name %></a>
+              <small>
+                updated <%= time_ago_in_words(trip.updated_at)%> ago
+              </small>
+              <a href="/trips/<%= trip.id %>/edit" class="btn btn-warning">
+                <i class="fa fa-edit"></i>
+              </a>
             </h3>
           </div>
 
           <div class="panel-body">
-            <a href="/trips/<%=trip.id%>">
-              <%=trip.name%></a>
+            <dl class="dl-horizontal">
+              <dt>Trip Creator:</dt>
+              <dd><%=User.find_by(:id => trip.user_id).username %></dd>
 
+              <dt>Destination</dt>
+              <dd><%= trip.destination %></dd>
+
+              <dt>Start date</dt>
+              <dd><%= trip.start_date %></dd>
+
+              <dt>End date</dt>
+              <dd><%= trip.end_date %></dd>
+
+              <dt>Description</dt>
+              <dd><%= trip.description %></dd>
+
+            </dt>
+
+            <dt>Trip Participants:</dt>
+            <dd><ul>
               <% trip.participants.each do |participant| %>
-              <small>
-                <%=User.find_by(:id => participant.user_id).username %>
-              </small>
-              <% end %> <!--closes loop on listing all trip participants -->
-
-              <a href="/trips/<%= trip.id %>/edit" class="btn btn-warning">
-                <i class="fa fa-edit"></i>
-              </a>
-
-              <% if trip.user_id == current_user.id %>
-              <a href="/delete_trip/<%= trip.id %>" class="btn btn-danger" rel="nofollow"> <i class="fa fa-trash-o"></i>
-              </a>
-              <% else %>
-              <!-- if you're not the trip.user_id does not equal the current user id, then you're not the creator of hte trip and all you can do is see the page and make edits. YOu cannot detroy it.-->
-              <% end %> <!-- closes if-then on edit-delete buttons -->
-
-            </div>       <!-- closes panel body  -->
-          </div>     <!-- closes panel -->
-
-        </div>    <!-- closes row -->
-        <% end %> <!-- closes the full loop -->
-
-      </div>
-
-
-      <div class="col-md-offset-2 col-md-5">
-        <!-- right column -->
-
-        <h1>Trips you're participating in</h1>
-        <!-- show the trips in which the current_user is a participant, and providing the option to remove themselves from that trip -->
-        <% Trip.where(:user_id => @current_user.id).each do |trip| %>
-
-        <div class="row">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title">
-                <a href="/users/<%=trip.user_id%>"><%=trip.user.username %></a>
-                <small>
-                  <%= time_ago_in_words(trip.updated_at)%> ago (change to trip start date)
-                </small>
-              </h3>
-            </div>
-
-            <div class="panel-body">
-              <a href="/trips/<%=trip.id%>">
-                <%=trip.name%></a>
-
-                <% trip.participants.each do |participant| %>
+              <li>
                 <small>
                   <%=User.find_by(:id => participant.user_id).username %>
                 </small>
-                <% end %> <!--closes loop on listing all trip participants -->
+              </li>
+              <% end %> <!--closes loop on listing all trip participants -->
+            </ul></dd>
 
-                <a href="/trips/<%= trip.id %>/edit" class="btn btn-warning">
-                  <i class="fa fa-edit"></i>
-                </a>
+          </div>       <!-- closes panel body  -->
 
-                <% if trip.user_id == current_user.id %>
-                <a href="/delete_trip/<%= trip.id %>" class="btn btn-danger" rel="nofollow"> <i class="fa fa-trash-o"></i>
-                </a>
-                <% else %>
-                <!-- if you're not the trip.user_id does not equal the current user id, then you're not the creator of hte trip and all you can do is see the page and make edits. YOu cannot detroy it.-->
-                <% end %> <!-- closes if-then on edit-delete buttons -->
+        </div>     <!-- closes panel -->
 
-              </div>       <!-- closes panel body  -->
-            </div>     <!-- closes panel -->
+      </div>    <!-- closes row -->
 
-          </div>    <!-- closes row -->
+      <% end %>  <!--end ## this closes the full loop-->
 
-          <% end %>  <!--end ## this closes the full loop-->
-
-        </div> <!--closes container -->
+    </div> <!--closes container -->
 
 
-      </div>
-    </div>
   </div>
 </div>
+<% end %>
