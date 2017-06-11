@@ -102,17 +102,13 @@
               <dt>Description</dt>
               <dd><%= trip.description %></dd>
 
+              <!-- this requires a .each loop to show each activity in the trip -->
+              <dt>Activities</dt>
+              <dd><%= trip.activity_id %></dd>
+
             </dt>
 
-            <!-- this requires a .each loop to show each activity in the trip -->
-            <dt>Activities</dt>
-            <ul class="list-group">
 
-              <p>
-                <%= Activity.find_by(:id => trip).name %>:
-              </p>
-
-            </ul>
 
             <dt>Trip Participants:</dt>
             <dd><ul>

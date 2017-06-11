@@ -30,10 +30,28 @@
       <!-- Label and input for time -->
       <div class="form-group">
         <label for="time" class="control-label">
-          Time
+          When?
         </label>
+        <div class="container">
+            <div class="row">
+                <div class='col-sm-3'>
+                    <div class="form-group">
+                        <div class='input-group date' id='datetimepicker1'>
+                            <input type='text' name="time" class="form-control" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    $(function () {
+                        $('#datetimepicker1').datetimepicker();
+                    });
+                </script>
+            </div>
+        </div>
 
-        <input type="text" id="time" name="time" placeholder="Time" class="form-control" value="<%= @activity.time %>">
       </div>
 
       <button class="btn btn-success">
