@@ -4,4 +4,6 @@ class Trip < ApplicationRecord
 
   has_many :participants, :dependent => :destroy
 
+  has_many :activities
+
 end
