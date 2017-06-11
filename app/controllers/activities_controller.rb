@@ -9,6 +9,7 @@ class ActivitiesController < ApplicationController
     @activity = Activity.find(params[:id])
     @trip = Trip.all
 
+
     render("activities/show.html.erb")
   end
 
@@ -45,6 +46,7 @@ class ActivitiesController < ApplicationController
 
     @activity.name = params[:name]
     @activity.time = params[:time]
+    @activity.trip_id = params[:trip_id]
 
     save_status = @activity.save
 
