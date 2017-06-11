@@ -2,6 +2,16 @@ class TripsController < ApplicationController
   def index
     @trips = Trip.all
     @current_user = current_user
+    @trips_participating_in = []
+    Participant.where(:user_id => current_user.id).each do |participation|
+      the_trip = participation.trip
+      if the_trip.user_id == current_user.id
+        # do nothing
+      else
+        @trips_participating_in.push(the_trip)
+      end
+    end
+
 
     render("trips/index.html.erb")
   end

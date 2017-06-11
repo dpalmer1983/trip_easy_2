@@ -82,9 +82,9 @@
       <!-- right column -->
 
       <h1>Trips you're participating in</h1>
-      <h4>this currently has all the trips that the person created, not the ones where the person is the participant. I need to fix this </h4>
-      <!-- show the trips in which the current_user is a participant -->
-      <% Trip.where(:user_id => @current_user.id).each do |trip| %>
+      <% @trips_participating_in.each do |trip| %>
+
+
 
       <div class="row">
         <div class="panel panel-default">
