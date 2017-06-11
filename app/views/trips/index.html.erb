@@ -107,12 +107,11 @@
             <!-- this requires a .each loop to show each activity in the trip -->
             <dt>Activities</dt>
             <ul class="list-group">
-              <% Trip.activity_id.name %>
+
               <p>
-                <%= trip.activity.name %>:
-                <%= trip.activity.time %>
+                <%= Activity.find_by(:id => trip).name %>:
               </p>
-              <% end %>
+
             </ul>
 
             <dt>Trip Participants:</dt>

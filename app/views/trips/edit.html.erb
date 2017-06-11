@@ -81,16 +81,21 @@
                 <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"><%= @trip.description %></textarea>
               </div>
 
-              <!-- Label and input for your first trip activity -->
               <div class="form-group">
-                <label for="activity" class="control-label">
-                  Add an activity
+                <div class='col-md-4'>
+                <label for="name" class="control-label">
+                  Create an activity
                 </label>
 
-                <input type="text" id="activity" name="activity" placeholder="Activity" class="form-control" value="<%= @trip.activity_id %>">
+                <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @activity.name %>">
+              </div>
+
+
+              <!-- Label and input for time -->
+              <div class="form-group">
                 <div class="container">
                   <div class="row">
-                    <div class='col-sm-6'>
+                    <div class='col-sm-3'>
                       <div class="form-group">
                         <label for="activity.time" class="control-label">
                           When is the activity happening
@@ -110,6 +115,7 @@
                     </script>
                   </div>
                 </div>
+              </div>
 
 
                 <!-- Label and input for user_id -->
@@ -120,7 +126,7 @@
 
                 <!-- Label and input for start_date -->
                 <div class="container">
-                  <div class='col-md-5'>
+                  <div class='col-md-3'>
                     <div class="form-group">
                       <label for="start_date" class="control-label">
                         Edit Trip Start Date
@@ -133,9 +139,8 @@
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="container">
-                  <div class='col-md-5'>
+
+                  <div class='col-md-3'>
                     <div class="form-group">
                       <label for="end_date" class="control-label">
                         Edit Trip End Date

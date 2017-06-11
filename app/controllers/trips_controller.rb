@@ -23,13 +23,14 @@ class TripsController < ApplicationController
     @trip.start_date = Chronic.parse(params[:start_date])
     @trip.end_date = Chronic.parse(params[:end_date])
 
-    @activity = Activity.new
+    @activity = Activity.all
 
     render("trips/show.html.erb")
   end
 
   def new
     @trip = Trip.new
+    @activity = Activity.new
 
     render("trips/new.html.erb")
   end
@@ -57,6 +58,7 @@ class TripsController < ApplicationController
 
   def edit
     @trip = Trip.find(params[:id])
+    @activity = Activity.all
 
     render("trips/edit.html.erb")
   end

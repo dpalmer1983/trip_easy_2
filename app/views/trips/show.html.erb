@@ -21,15 +21,9 @@
       <dd><%= @trip.description %></dd>
 
       <!-- this requires a .each loop to show each activity in the trip -->
-      <dt>Activities</dt>
-      <ul class="list-group">
-        <% Activity.where(:id = trip.activity_id).name %>
-        <p>
-          <%= activity.name %>
-          <%= activity.time %>
-        </p>
-        <% end %>
       </ul>
+      <dt>Activities</dt>
+      <dd><%= Activity.find_by(:id => @trip.activity_id).name %></dd>
 
       <!-- this requires a .each loop to show each participant in the trip -->
 
