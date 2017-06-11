@@ -9,7 +9,8 @@
   </p>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-group">
+  <div class="form-inline">
+    <div class="form-group">
     <%= f.label :email %>
     <%= f.email_field :email, autofocus: true %>
     <%= f.label :password %>
@@ -18,12 +19,11 @@
     <%= f.check_box :remember_me %>
     <%= f.label :remember_me %>
     <% end -%>
-    <div class="actions">
-      <%= f.submit "Log in" %>
-    </div>
-    <% end %>
+    <%= f.submit "Log in" %>
+        <% end %>
     <%= render "devise/shared/links" %>
   </div>
+</div>
   <p>
     <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary sign-up' %>
   </p>
