@@ -1,5 +1,5 @@
 class Activity < ApplicationRecord
 
-has_one :trip
+has_many :trips
 
 end

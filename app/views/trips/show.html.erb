@@ -19,29 +19,30 @@
 
       <dt>Description</dt>
       <dd><%= @trip.description %></dd>
-
-      <!-- this requires a .each loop to show each activity in the trip -->
-      </ul>
       <dt>Activities</dt>
-    
+      <dd><%= @trip.activities %></dd>
+      <!-- this requires a .each loop to show each activity in the trip -->
+    </ul>
 
-      <!-- this requires a .each loop to show each participant in the trip -->
 
-      <dt>Trip Participants</dt>
-      <dd>
-        <ul class="list-group">
-          <% @trip.participants.each do |trip| %>
-          <p>
-            <%= trip.user.first_name %>
-            <%= trip.user.last_name %>:
-            <%= trip.user.email %>
-          </p>
-          <% end %>
-        </ul>
+
+
+    <!-- this is working - don't change it -->
+    <dt>Trip Participants</dt>
+    <dd>
+      <ul class="list-group">
+        <% @trip.participants.each do |trip| %>
+        <p>
+          <%= trip.user.first_name %>
+          <%= trip.user.last_name %>:
+          <%= trip.user.email %>
+        </p>
+        <% end %>
       </ul>
+    </ul>
 
-    </dd>
-  </dl>
+  </dd>
+</dl>
 </div>
 
 

@@ -13,7 +13,7 @@
 </div>
 
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-6">
     <form action="/create_activity" method="post">
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
@@ -21,20 +21,32 @@
       <!-- Label and input for name -->
       <div class="form-group">
         <label for="name" class="control-label">
-          Name
+          What's the activity?
         </label>
 
         <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @activity.name %>">
       </div>
 
+      <!-- Label and input for trip_id -->
+      <div class="form-group">
+        <label for="trip_id" class="control-label">
+          Which trip do you want to add the activity to?
+        </label>
+
+<!--- go to current user, then show only the trips they've created -->
+
+        <%= select_tag(:trip_id, options_from_collection_for_select(Trip.all, :id, :name, @activity.trip_id), :class => "form-control") %>
+
+      </div>
+
       <!-- Label and input for time -->
       <div class="form-group">
         <label for="time" class="control-label">
-          When?
+          When is the activity?
         </label>
         <div class="container">
             <div class="row">
-                <div class='col-sm-3'>
+                <div class='col-sm-6'>
                     <div class="form-group">
                         <div class='input-group date' id='datetimepicker1'>
                             <input type='text' name="time" class="form-control" />
