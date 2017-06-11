@@ -21,7 +21,8 @@ class ActivitiesController < ApplicationController
     @activity = Activity.new
 
     @activity.name = params[:name]
-    @activity.time = params[:time]
+    @activity.time = Chronic.parse(params[:time])
+    
 
     save_status = @activity.save
 

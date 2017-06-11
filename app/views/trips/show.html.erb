@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h3>Trip #<%= @trip.id %></h3>
+  <h3>Trip <%= @trip.name %></h3>
 </div>
 
 <div class="row">
@@ -19,6 +19,17 @@
 
       <dt>Description</dt>
       <dd><%= @trip.description %></dd>
+
+      <!-- this requires a .each loop to show each activity in the trip -->
+      <dt>Activities</dt>
+      <ul class="list-group">
+        <% Activity.where(:id = trip.activity_id).name %>
+        <p>
+          <%= activity.name %>
+          <%= activity.time %>
+        </p>
+        <% end %>
+      </ul>
 
       <!-- this requires a .each loop to show each participant in the trip -->
 
@@ -51,6 +62,4 @@
   <a href="/delete_trip/<%= @trip.id %>" class="btn btn-danger" rel="nofollow">
     Delete
   </a>
-</div>
-</div>
 </div>

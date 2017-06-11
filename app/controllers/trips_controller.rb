@@ -12,6 +12,7 @@ class TripsController < ApplicationController
       end
     end
 
+    @activity = Activity.all
 
     render("trips/index.html.erb")
   end
@@ -21,6 +22,8 @@ class TripsController < ApplicationController
     @participant = Participant.all
     @trip.start_date = Chronic.parse(params[:start_date])
     @trip.end_date = Chronic.parse(params[:end_date])
+
+    @activity = Activity.new
 
     render("trips/show.html.erb")
   end
@@ -33,6 +36,7 @@ class TripsController < ApplicationController
 
   def create
     @trip = Trip.new
+    @activity = Activity.new
 
     @trip.name = params[:name]
     @trip.destination = params[:destination]
@@ -40,7 +44,7 @@ class TripsController < ApplicationController
     @trip.end_date = Chronic.parse(params[:end_date])
     @trip.description = params[:description]
     @trip.user_id = params[:user_id]
-
+    @trip.activity_id = params[:activity_id]
 
     save_status = @trip.save
 
